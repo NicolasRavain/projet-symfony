@@ -9,11 +9,14 @@
             <div class="card mt-3 shadow">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p>{{ product.price }} €</p>
+                    <p>{{ product.price / 100 }} €</p>
                     <p>{{ product.description }}</p>
-                    <a href="{{ path('product_show', { id: product.id }) }}" class="btn btn-secondary" class="card-link">Voir</a>
+                    <a href="{{ path('product_show', { id: product.id }) }}" class="btn btn-secondary btn-sm" class="card-link">Voir</a>
                     <a href="{{ path('product_edit', { id:product.id }) }}" class="btn btn-success btn-sm">Modifier</a>
-                    <a href="{{ path('product_delete', { id:product.id }) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                    <form action="{{ path('product_delete', {id: product.id}) }}" method="post" class="d-inline">
+                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
+                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
                 </div>
             </div>
         </div>

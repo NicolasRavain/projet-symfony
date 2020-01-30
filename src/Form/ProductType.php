@@ -27,4 +27,5 @@ class ProductType extends AbstractType
             'data_class' => Product::class,
         ]);
     }
+    
 }
