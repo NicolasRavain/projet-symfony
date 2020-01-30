@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+    <h1 class="text-center mb-5">Nos produits</h1>
+    <div class="row">
+    {% for product in products %}
+        <div class="col-lg-3">
+            <div class="card mt-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p>{{ product.price }} €</p>
+                    <p>{{ product.description }}</p>
+                    <a href="{{ path('product_show', { id: product.id }) }}" class="btn btn-secondary" class="card-link">Voir</a>
+                    <a href="{{ path('product_edit', { id:product.id }) }}" class="btn btn-success btn-sm">Modifier</a>
+                    <a href="{{ path('product_delete', { id:product.id }) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
