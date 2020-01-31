@@ -11,7 +11,7 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p>{{ product.price / 100 }} €</p>
                     <p>{{ product.description }}</p>
-                    <a href="{{ path('product_show', { id: product.id }) }}" class="btn btn-secondary btn-sm" class="card-link">Voir</a>
+                    <a href="{{ path('product_show', { slug: product.slug }) }}" class="btn btn-secondary btn-sm" class="card-link">Voir</a>
                     <a href="{{ path('product_edit', { id:product.id }) }}" class="btn btn-success btn-sm">Modifier</a>
                     <form action="{{ path('product_delete', {id: product.id}) }}" method="post" class="d-inline">
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}">

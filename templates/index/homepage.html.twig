@@ -3,5 +3,35 @@
 
 
 {% block body %}
-    <h1>Bienvenue sur mon site</h1>
+    <h1 class="display-3 text-center text-primary font-weight-bold mt-4">Bienvenue sur mon site</h1>
+
+    <h2 class="text-center mt-5">Nos produits les plus vendus</h2>
+
+    <div class="row">
+        {% for product in products %}
+            <div class="col-lg-3">
+                <div class="card text-white bg-primary mt-3 shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p>{{ product.description }}</p>
+                        <p><strong>{{ product.price / 100 }} €</strong></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if favorite_product %}
+    
+    <h2 class="mt-5 mb-3 text-center">Produit favori</h2>
+        <div class="card text-white bg-primary shadow mb-5 w-25 pt-4 pb-4 mx-auto">
+            <div class="card-body text-center">
+                <h5 class="mb-3">{{ favorite_product.name}}</h5>
+                <p><strong>{{ favorite_product.description }}<strong></p>
+                <p class="mb-2"><strong>{{ favorite_product.price / 100 }} €<strong></p>
+                <a href="{{ path('product_show', { slug: favorite_product.slug }) }}" 
+                class="btn fill btn-warning pl-4 pr-4 mt-4">Voir</a>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
